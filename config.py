@@ -1,0 +1,50 @@
+"""
+Configuration file for WelVision YOLO Data Labeller
+Modify these settings according to your environment
+"""
+
+# Database Configuration
+# IMPORTANT: Update the password field with your MySQL root password before running
+import os
+
+
+DATABASE_CONFIG = {
+    'host': 'localhost',  # Change to your MySQL server IP if on another PC
+    'user': 'root',
+    'password': 'root',  # ⚠️ ENTER YOUR MYSQL PASSWORD HERE
+    'database': 'welvision_db',
+    'port': 3306
+}
+
+# Application Settings
+APP_CONFIG = {
+    'title': 'WelVision Data Labeller',
+    'geometry': '1400x900',  # More reasonable default size
+    'bg_color': '#0a2158',
+    'version': 'v2.0'
+}
+
+# File Settings
+FILE_CONFIG = {
+    'supported_formats': [
+        ('Image files', '*.jpg *.jpeg *.png *.bmp *.tiff *.tif'),
+        ('JPEG files', '*.jpg *.jpeg'),
+        ('PNG files', '*.png'),
+        ('BMP files', '*.bmp'),
+        ('TIFF files', '*.tiff *.tif'),
+        ('All files', '*.*')
+    ],
+    'dataset_base_path': f'C:\\Users\\{os.getlogin()}\\Desktop\\Datasets',
+    'max_preview_size': (800, 600)
+}
+
+# YOLO Settings
+YOLO_CONFIG = {
+    'confidence_threshold': 0.25,
+    'iou_threshold': 0.45,
+    'max_detections': 1000,
+    'device': 'auto',  # 'auto', 'cpu', 'cuda', or specific GPU like 'cuda:0'
+    'device_fallback': True,  # Auto-fallback to CPU if GPU fails
+    'memory_fraction': 0.9,  # Fraction of GPU memory to use (0.1 to 1.0)
+    'verbose_device_info': True,  # Show detailed device information in console
+}
